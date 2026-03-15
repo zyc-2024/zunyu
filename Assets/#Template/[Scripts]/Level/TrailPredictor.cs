@@ -17,6 +17,7 @@ namespace DancingLineFanmade.Level
 
         [Header("Data")] [Min(0f)] public int horizontalSpeed = 12;
         [Min(0f)] public float verticalImpulse;
+        // public float g_constant = 9.81f;
 
         private readonly LayerMask layerMask = Physics.DefaultRaycastLayers;
         private const QueryTriggerInteraction queryTriggerInteraction = QueryTriggerInteraction.Ignore;
@@ -194,7 +195,10 @@ namespace DancingLineFanmade.Level
             if (Player.Instance)
                 result = verticalImpulse * x / (Player.Instance.characterRigidbody.mass * horizontalSpeed) -
                          x * x * Physics.gravity.magnitude / (2 * horizontalSpeed * horizontalSpeed);
+                // result = verticalImpulse * x / (Player.Instance.characterRigidbody.mass * horizontalSpeed) -
+                        //  x * x * g_constant / (2 * horizontalSpeed * horizontalSpeed);
             else result = -x * x * Physics.gravity.magnitude / (2 * horizontalSpeed * horizontalSpeed);
+            // else result = -x * x * g_constant / (2 * horizontalSpeed * horizontalSpeed);
             return result;
         }
 #endif
